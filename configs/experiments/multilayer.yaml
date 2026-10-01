@@ -1,0 +1,27 @@
+# Base model file, resolved relative to this YAML file.
+model: ../model/default.yaml
+
+name: multilayer_square_spiral # Used in the generated results directory name.
+layers: 8                      # Any integer >= 2 for multi-layer training/evaluation.
+
+# Options: straight, circle, square, spiral, square_spiral, zigzag.
+path: square_spiral
+
+controller:
+  # Options: open_loop, output_feedback, error_feedback, pi.
+  # This is used by direct simulation. `slm-train --controller` can override it.
+  kind: error_feedback
+  power: 8.8         # Used only by open_loop [W].
+  # Baseline power for PI; ignored by specialized multi-layer error_feedback [W].
+  feedforward: 20.0
+  # Initial K_first[t] for stage-one output feedback (legacy: 0.005).
+  output_gain: 0.005
+  # For multi-layer error_feedback this initializes the shared K[t] (legacy: 0.001).
+  gain: 0.001
+  integral_gain: 0.0 # Initial Ki, used only by pi.
+
+reference_temperature: 600.0 # Desired measured output [K].
+measurement_noise_std: 0.0   # Gaussian measurement-noise standard deviation [K].
+seed: 7                      # Random seed used for noisy evaluation.
+output_root: results          # Timestamped evaluation directories are created here.
+figure_root: figures          # Plots are grouped by type beneath this directory.

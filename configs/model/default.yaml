@@ -1,0 +1,34 @@
+# Default research-scale thermal model. All values use SI units.
+geometry:
+  length_x: 0.0005          # Build-area length in x [m].
+  length_y: 0.0005          # Build-area length in y [m].
+  layer_thickness: 0.00005  # Powder-layer thickness [m].
+  cells_x: 25               # Spatial cells in x; reduce for quick tests.
+  cells_y: 25               # Spatial cells in y; reduce for quick tests.
+
+material:
+  substrate_temperature: 900.0       # Initial/substrate temperature [K].
+  ambient_temperature: 300.0         # Ambient temperature [K].
+  porosity: 0.6                       # Powder void fraction in [0, 1).
+  volumetric_heat_capacity: 4250000.0 # rho*c_p [J/(m^3 K)].
+  powder_conductivity: 0.5            # Powder conductivity [W/(m K)].
+  dense_conductivity: 20.0            # Dense-material conductivity [W/(m K)].
+  convection_coefficient: 10.0        # Surface convection [W/(m^2 K)].
+
+laser:
+  maximum_power: 50.0  # Saturation limit [W].
+  absorptivity: 0.42   # Absorbed fraction in [0, 1].
+  beam_radius: 0.00006 # Gaussian beam radius [m].
+
+time:
+  printing_duration: 0.00125 # Printing time of one layer [s].
+  recoating_duration: 0.00125 # Zero-input cooling between layers [s].
+  step_size: 0.00001          # Euler integration/sample period [s].
+
+# Maximum active layer fields. Older fields are merged at the bottom of the ROI.
+roi_layers: 4
+
+# Tensor options: dtype is float32 or float64; device is cpu, cuda, or mps.
+dtype: float64
+device: cpu
+

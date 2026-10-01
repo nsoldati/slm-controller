@@ -1,0 +1,42 @@
+# Fast configuration for tests and command-line smoke runs; not for reported results.
+model:
+  geometry:
+    length_x: 0.0005
+    length_y: 0.0005
+    layer_thickness: 0.00005
+    cells_x: 4
+    cells_y: 4
+  material:
+    substrate_temperature: 900.0
+    ambient_temperature: 300.0
+    porosity: 0.6
+    volumetric_heat_capacity: 4250000.0
+    powder_conductivity: 0.5
+    dense_conductivity: 20.0
+    convection_coefficient: 10.0
+  laser:
+    maximum_power: 50.0
+    absorptivity: 0.42
+    beam_radius: 0.00006
+  time:
+    printing_duration: 0.0001
+    recoating_duration: 0.00005
+    step_size: 0.00001
+  roi_layers: 3
+name: smoke_test
+layers: 2 # Set to >= 2 when using --layers multi.
+# Options: straight, circle, square, spiral, square_spiral, zigzag.
+path: straight
+controller:
+  # Options: open_loop, output_feedback, error_feedback, pi.
+  kind: open_loop
+  power: 5.0
+  feedforward: 5.0
+  output_gain: 0.005
+  gain: 0.001
+  integral_gain: 0.0
+reference_temperature: 250.0
+measurement_noise_std: 0.0
+seed: 7
+output_root: results
+figure_root: figures

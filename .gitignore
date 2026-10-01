@@ -1,0 +1,23 @@
+.DS_Store
+.idea/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+
+# Generated experiment outputs. Keep the checkpoint guide tracked.
+artifacts/checkpoints/*
+!artifacts/checkpoints/README.md
+
+# Old legacy version
+legacy/
+
+# Tests and output folders
+tests/
+figures/
+results/
